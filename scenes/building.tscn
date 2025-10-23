@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjedfrp5uvndc"]
+
+[ext_resource type="Texture2D" uid="uid://bk1h8bx83a1kw" path="res://assets/Building 1-1.png.png" id="1_n8bkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvy8r"]
+size = Vector3(9.928955, 10.036137, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D"]
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_n8bkc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13562012, 0.18311119, 0)
+shape = SubResource("BoxShape3D_uvy8r")
