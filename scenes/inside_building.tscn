@@ -116,6 +116,8 @@ interact_label = "building_exit"
 interact_type = "scene_change"
 interact_value = "Press [E] to exit"
 interact_target = "res://scenes/demo.tscn"
+last_scene = "res://scenes/inside_building.tscn"
+entrance = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37280273, 0.14138031, 0.15942383)

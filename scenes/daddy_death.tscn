@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://coqnli16tstm2"]
+
+[ext_resource type="Texture2D" uid="uid://dp78mtqwsjyqm" path="res://assets/Grim Reaper/GrimReaper_Idle.png" id="1_j52b0"]
+[ext_resource type="Script" uid="uid://b1pem15atqeff" path="res://scripts/daddy_death.gd" id="1_w6638"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6638"]
+atlas = ExtResource("1_j52b0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh1df"]
+atlas = ExtResource("1_j52b0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqrbl"]
+atlas = ExtResource("1_j52b0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jevyb"]
+atlas = ExtResource("1_j52b0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ff2vo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6638")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh1df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqrbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jevyb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn64b"]
+size = Vector3(0.4909668, 0.36114502, 0.14639282)
+
+[node name="DaddyDeath" type="Node3D"]
+script = ExtResource("1_w6638")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+flip_h = true
+modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ff2vo")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013793945, -0.03640747, -0.021957397)
+shape = SubResource("BoxShape3D_vn64b")

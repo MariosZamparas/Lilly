@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2je8eaa1rho2"]
+
+[ext_resource type="PackedScene" uid="uid://defbo2eehvw10" path="res://scenes/player.tscn" id="1_65la3"]
+[ext_resource type="Texture2D" uid="uid://bco2mh2g3f53k" path="res://assets/library/door.png.png" id="2_qcuhb"]
+[ext_resource type="PackedScene" uid="uid://dgs3jkwa4kuq2" path="res://scenes/interaction.tscn" id="4_3853c"]
+[ext_resource type="PackedScene" uid="uid://coqnli16tstm2" path="res://scenes/daddy_death.tscn" id="5_3bgk5"]
+[ext_resource type="Texture2D" uid="uid://d0pxyyim8enqt" path="res://assets/window.png" id="5_f74lx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_liiij"]
+size = Vector3(5, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6m62"]
+size = Vector3(4.9561157, 1.1721191, 10.160645)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_liiij"]
+size = Vector3(3.8535156, 1.4690552, 10.942322)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw2bt"]
+size = Vector3(4.7421875, 2.330841, 10.25061)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnnfg"]
+size = Vector3(2.6079102, 3.4557953, 1.3188477)
+
+[node name="Building" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(3.96792, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_liiij")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(0.99999624, 0, 0, 0, 0.99996847, 0, 0, 0, 0.99996847, 0, -0.08312771, 0)
+shape = SubResource("BoxShape3D_u6m62")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(3.96792, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.955835, 0)
+mesh = SubResource("BoxMesh_liiij")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.7344331e-07, -1, 0, 3.9679203, -4.371139e-08, 0, 0, 0, 1, -9.710755, 9.029742, 0)
+mesh = SubResource("BoxMesh_liiij")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, -1.04165565e-11, 1, 0, 0, 0, 1, -0.578127, 0.07858181, -0.41757202)
+shape = SubResource("BoxShape3D_liiij")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.7344331e-07, -1, 0, 3.9679203, -4.371139e-08, 0, 0, 0, 1, 10.085132, 9.029743, 0)
+mesh = SubResource("BoxMesh_liiij")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, -1.04165565e-11, 1, 0, 0, 0, 1, -0.578127, 0.07858181, -0.41757202)
+shape = SubResource("BoxShape3D_liiij")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(7.581448e-15, 4.371139e-08, 2.0701065, 3.9679203, -4.371139e-08, 0, 1.7344331e-07, 1, -9.048723e-08, -0.16910529, 9.029743, -5.3977594)
+mesh = SubResource("BoxMesh_liiij")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(1, -1.1812773e-12, 1.1636115e-19, 0, 1, -1.4210855e-14, 2.5410988e-21, 0, 0.9999999, -0.12793255, -0.07719326, 0.11456253)
+shape = SubResource("BoxShape3D_yw2bt")
+
+[node name="Player" parent="." instance=ExtResource("1_65la3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -6.7038307, 1.1320983, -3.2767863)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7839937, 3.955545, 8.98559)
+
+[node name="Door" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.4117547, 0, 0, 0, 1, -6.718433, 2.172332, -4.7755194)
+texture_filter = 0
+texture = ExtResource("2_qcuhb")
+
+[node name="Interaction" parent="." instance=ExtResource("4_3853c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8967566, 1.995008, -4.760595)
+interact_label = "building_exit"
+interact_type = "scene_change"
+interact_value = "Press [E] to exit"
+interact_target = "res://scenes/demo.tscn"
+last_scene = "res://scenes/house.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37280273, 0.14138031, 0.15942383)
+shape = SubResource("BoxShape3D_hnnfg")
+
+[node name="DaddyDeath" parent="." instance=ExtResource("5_3bgk5")]
+transform = Transform3D(8.025, 0, 0, 0, 8.025, 0, 0, 0, 8.025, 5.827485, 2.3138573, -3.052846)
+
+[node name="dad_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7947755, 1.638129, -2.2081306)
+light_color = Color(0.47318435, 0.00016648427, 0.47667795, 1)
+light_energy = 2.869
+shadow_enabled = true
+omni_range = 10.361
+
+[node name="Window" type="Sprite3D" parent="."]
+transform = Transform3D(0.059636436, 0, 6.434724, 0, 6.435, 0, -6.434724, 0, 0.059636436, -9.1783085, 3.2382917, -0.07632434)
+modulate = Color(0.10980392, 0.28627452, 0.6509804, 1)
+texture_filter = 0
+texture = ExtResource("5_f74lx")
+
+[node name="window_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.380894, 3.335671, 0)
+light_color = Color(0, 0.21568628, 0.5568628, 1)
+light_energy = 3.336
+shadow_enabled = true
+omni_range = 19.013

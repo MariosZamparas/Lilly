@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvpn78sa03jpl"]
+[gd_scene load_steps=16 format=3 uid="uid://bvpn78sa03jpl"]
 
 [ext_resource type="Material" uid="uid://dyw8t36brmtry" path="res://assets/Materials/structure.tres" id="1_ba4lm"]
 [ext_resource type="PackedScene" uid="uid://defbo2eehvw10" path="res://scenes/player.tscn" id="2_l20p6"]
 [ext_resource type="PackedScene" uid="uid://cjedfrp5uvndc" path="res://scenes/building.tscn" id="3_l20p6"]
 [ext_resource type="PackedScene" uid="uid://dgs3jkwa4kuq2" path="res://scenes/interaction.tscn" id="4_vephn"]
+[ext_resource type="Texture2D" uid="uid://2kmv838rkemj" path="res://assets/lamp.png" id="5_b0nem"]
+[ext_resource type="Texture2D" uid="uid://bco2mh2g3f53k" path="res://assets/library/door.png.png" id="6_x0xbu"]
 
 [sub_resource type="GDScript" id="GDScript_7qr1p"]
 
@@ -27,25 +29,34 @@ script/source = "extends Node3D
 [sub_resource type="BoxShape3D" id="BoxShape3D_vephn"]
 size = Vector3(2.1154785, 1.837616, 1.3647766)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0nem"]
+size = Vector3(0.39959717, 1, 0.46862793)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0xbu"]
+size = Vector3(0.79211426, 1.6865234, 1.6524048)
+
 [node name="demo" type="Node3D"]
 script = SubResource("GDScript_7qr1p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(2.9949765, 0, 0, 0, 1, 0, 0, 0, 1, 9.810101, 0, 0)
 mesh = SubResource("BoxMesh_4wjo5")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018005371, -0.018005371, -0.07019043)
 shape = SubResource("BoxShape3D_jaera")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(-0.050451268, -0.99968725, 0, 2.016782, -0.025007904, 0, 0, 0, 1, -5.1362066, 2.4500756, 0)
 mesh = SubResource("BoxMesh_4wjo5")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(0.05225503, -0.00047903135, 3.463301, 2.4040322, -0.020254657, -0.075282715, 0.048727863, 0.9997948, 0.00013391362, 11.294046, 2.2455478, -4.558612)
 mesh = SubResource("BoxMesh_4wjo5")
 skeleton = NodePath("../MeshInstance3D")
@@ -53,31 +64,41 @@ skeleton = NodePath("../MeshInstance3D")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57970905, 1.6940684, 5.843505)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Buildings"]
 transform = Transform3D(2.942664, 0, 0, 0, 5.328957, 0, 0, 0, 1, 10.649295, 2.6535444, 1.3657274)
 material_override = ExtResource("1_ba4lm")
 mesh = SubResource("BoxMesh_jwabu")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Buildings"]
 transform = Transform3D(3.0780303, 0, 0, 0, 7.416286, 0, 0, 0, 1, 3.7702045, 4.0857153, -0.9229715)
 material_override = ExtResource("1_ba4lm")
 mesh = SubResource("BoxMesh_jwabu")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Buildings"]
 transform = Transform3D(2.942664, 0, 0, 0, 9.68683, 0, 0, 0, 1, 9.405106, 4.890738, -0.11348033)
 material_override = ExtResource("1_ba4lm")
 mesh = SubResource("BoxMesh_jwabu")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Buildings"]
 transform = Transform3D(2.942664, 0, 0, 0, 7.416286, 0, 0, 0, 1, 12.80351, 4.0857153, 2.6273715)
 material_override = ExtResource("1_ba4lm")
 mesh = SubResource("BoxMesh_jwabu")
+skeleton = NodePath("../..")
 
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(0.82230306, -1.8626451e-08, 0.56904995, -0.1549219, 0.9622277, 0.22386926, -0.54755557, -0.2722467, 0.7912426, -3.520394, 8.059233, 6.0974894)
+light_color = Color(0.21427673, 0.42888573, 0.59401083, 1)
+light_energy = 0.7
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 
 [node name="MapBorder" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.30458)
@@ -98,7 +119,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.7, 0, 0, 0, 0.275, -1.5956492, 4.0733337
 script = SubResource("GDScript_l20p6")
 
 [node name="Player" parent="." instance=ExtResource("2_l20p6")]
-transform = Transform3D(2.775, 0, 0, 0, 2.775, 0, 0, 0, 2.775, -2.3717594, 1.071233, 2.2264872)
+transform = Transform3D(2.775, 0, 0, 0, 2.775, 0, 0, 0, 2.775, -2.3717594, 0.9234148, 2.2264872)
 
 [node name="Interaction" parent="." instance=ExtResource("4_vephn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9427247, 2.2052526, 1.5354264)
@@ -106,7 +127,44 @@ interact_label = "Interaction_test"
 interact_type = "scene_change"
 interact_value = "Press [E] To Enter"
 interact_target = "res://scenes/inside_building.tscn"
+last_scene = "res://scenes/demo.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12380886, -0.78960085, -0.92201924)
 shape = SubResource("BoxShape3D_vephn")
+
+[node name="lamp" type="Sprite3D" parent="."]
+transform = Transform3D(2.6110559, 0, 0, 0, 2.3527946, 0, 0, 0, 1, 0.5392394, 1.5709958, 0.42883372)
+modulate = Color(0.5729883, 0.5729883, 0.5729883, 1)
+texture_filter = 0
+texture = ExtResource("5_b0nem")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lamp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lamp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050964355, 0, -0.089538574)
+shape = SubResource("BoxShape3D_b0nem")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5853672, 2.4296, 0.53147316)
+light_color = Color(0.72156864, 0.40784314, 0.09411765, 1)
+light_energy = 2.868
+shadow_enabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0358055, 0, 0.6990837, 0, 0.7, 0, -0.6990837, 0, 0.0358055, -4.452823, 1.2984455, 2.610392)
+alpha_cut = 1
+texture = ExtResource("6_x0xbu")
+
+[node name="Door_home" parent="." instance=ExtResource("4_vephn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.171238, 1.0453631, 2.5689163)
+interact_label = "Door to home"
+interact_type = "scene_change"
+interact_value = "Press [E] To Go Home"
+interact_target = "res://scenes/house.tscn"
+last_scene = "res://scenes/demo.tscn"
+entrance = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_home"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10394287, 0.34326172, 0.051849365)
+shape = SubResource("BoxShape3D_x0xbu")

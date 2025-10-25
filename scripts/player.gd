@@ -41,7 +41,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
 		execute_interaction()
 	
-	
 	#Animations
 	if is_on_floor():  #it means the character is either idle, running or sprinting
 		if velocity.x == 0:
@@ -90,4 +89,17 @@ func execute_interaction():
 		match cur_interaction.interact_type:
 			"scene_change" :
 				print (cur_interaction.interact_value)
+				Global.playerposition = self.global_transform
+				Global.lastscene = cur_interaction.last_scene
+				if cur_interaction.entrance == true:
+					Global.scenepath.append(Global.lastscene)
+					Global.coordinates.append(Global.playerposition)
+				else:
+					Global.scenepath.pop_back()
+					Global.coordinates.pop_back()
+				#print(Global.playerposition)
+				#print(Global.lastscene)
+				print(Global.scenepath)
+				print(Global.coordinates)
 				get_tree().change_scene_to_file(cur_interaction.interact_target)
+				

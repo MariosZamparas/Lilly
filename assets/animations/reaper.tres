@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://mm808u7f5fp3"]
+
+[ext_resource type="Texture2D" uid="uid://dp78mtqwsjyqm" path="res://assets/Grim Reaper/GrimReaper_Idle.png" id="1_epgp4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0cgl"]
+atlas = ExtResource("1_epgp4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5evv1"]
+atlas = ExtResource("1_epgp4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sogig"]
+atlas = ExtResource("1_epgp4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oujd"]
+atlas = ExtResource("1_epgp4")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0cgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5evv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sogig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oujd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
