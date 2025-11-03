@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://djwug5vhi0jdd"]
+
+[ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_bkoug"]
+[ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="2_so7n0"]
+[ext_resource type="Texture2D" uid="uid://cu6hb87en445f" path="res://Assets/plant.png" id="4_nnxp6"]
+[ext_resource type="Texture2D" uid="uid://dyrxr4in7r402" path="res://Assets/stairs.png" id="4_so7n0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ri8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddv0c"]
+size = Vector3(9.939453, 0.140625, 2.0075684)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb0eg"]
+size = Vector3(2.062561, 0.9310913, 0.6432495)
+
+[node name="Scene2" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4ri8r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062945366, 0)
+shape = SubResource("BoxShape3D_ddv0c")
+
+[node name="Player" parent="." instance=ExtResource("1_bkoug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8010457, 0.69780684, -0.5708517)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1728437, 5.217975)
+
+[node name="Interact" parent="." instance=ExtResource("2_so7n0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00484, 0.007367134, 0.8231251)
+interaction_type = "scene_change"
+target_file = "uid://bdfiisu0h3gy5"
+int_text = "Press [E] to go downstairs"
+enter = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52620554, 0.41714478, -0.17837524)
+shape = SubResource("BoxShape3D_wb0eg")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(3.385, 0, 0, 0, 3.385, 0, 0, 0, 3.385, 0, 1.1835036, -1.0979726)
+text = "House 1 Upstairs"
+
+[node name="Stairs" type="Sprite3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 3.4195085, -1.2640165, 1.0143518)
+texture = ExtResource("4_so7n0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -3.2849684, 0.71660006, -0.40797198)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("4_nnxp6")
