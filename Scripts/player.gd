@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite3D.flip_h = Input.is_action_pressed("Left") and not Input.is_action_pressed("Right")
 			anim.play("Run")
 	else:
-		anim.play("Jump" if velocity.y <= 0.0 else "Fall")  # fixed ternary
+		anim.play("Jump" if velocity.y <= 0.0 else "Fall")  
 
 
 # ---- Interaction handling ----
