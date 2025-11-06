@@ -4,6 +4,8 @@ extends CharacterBody3D
 @onready var interact_label: Label3D = $Interaction/Label3D
 @onready var interactions_area: Area3D = $Interaction/Area3D # child's signals should be connected to the _on_* callbacks
 
+@export var inv: Inv
+
 var all_interactions: Array[Area3D] = []
 
 const SPEED := 5.0

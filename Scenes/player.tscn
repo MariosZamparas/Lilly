@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://d11plsrexwx2s"]
+[gd_scene load_steps=27 format=3 uid="uid://d11plsrexwx2s"]
 
 [ext_resource type="Script" uid="uid://dfleon0bc8xmw" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dlablfq3xlkwm" path="res://SpriteSheets/AnimationSheet_Character.png" id="2_6t5aa"]
+[ext_resource type="Resource" uid="uid://d4e05l1hi2hmx" path="res://inventory/player_inventory.tres" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://brx82iwdanck2" path="res://Scenes/pause_menu.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://cy6131yeny88b" path="res://inventory/inventory_ui.tscn" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("2_6t5aa")
@@ -163,6 +165,7 @@ height = 1.7006836
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_cvnsp")
+inv = ExtResource("2_vgqql")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -192,6 +195,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045166016, 0)
 shape = SubResource("CapsuleShape3D_cvnsp")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_6t5aa")]
+
+[node name="Inventory_UI" parent="." instance=ExtResource("5_fkybt")]
 
 [connection signal="area_entered" from="Interaction/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Interaction/Area3D" to="." method="_on_area_3d_area_exited"]

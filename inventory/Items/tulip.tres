@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dya86hgpc2qtk"]
+
+[ext_resource type="Script" uid="uid://dcknxy1e63whl" path="res://inventory/inv_item.gd" id="1_v4fwm"]
+[ext_resource type="Texture2D" uid="uid://cbme0bxagyvqm" path="res://Assets/flowers/TulipOUTLINED.png" id="2_v4fwm"]
+
+[resource]
+script = ExtResource("1_v4fwm")
+name = "Tulip"
+texture = ExtResource("2_v4fwm")
+metadata/_custom_type_script = "uid://dcknxy1e63whl"

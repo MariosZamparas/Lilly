@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://brx82iwdanck2"]
+[gd_scene load_steps=9 format=3 uid="uid://cy6131yeny88b"]
 
-[ext_resource type="Script" uid="uid://bpit8xttb21k7" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
-[ext_resource type="Shader" uid="uid://bwac68l6iacrm" path="res://Menu Assets/pausemenu.gdshader" id="2_1och7"]
+[ext_resource type="Script" uid="uid://cibn0ujbry3i2" path="res://inventory/inventory_ui.gd" id="1_hfbh7"]
+[ext_resource type="Shader" uid="uid://bwac68l6iacrm" path="res://Menu Assets/pausemenu.gdshader" id="2_2hut1"]
+[ext_resource type="Texture2D" uid="uid://dd1833i6aa1d8" path="res://inventory/inventory-background.png" id="3_7rvkw"]
+[ext_resource type="PackedScene" uid="uid://w6dyrhqowg2c" path="res://inventory/inv_panel.tscn" id="3_cedrj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpi0q"]
-shader = ExtResource("2_1och7")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cedrj"]
+shader = ExtResource("2_2hut1")
 shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_myy0f"]
@@ -24,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/path = NodePath("NinePatchRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/path = NodePath("NinePatchRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,7 +70,7 @@ _data = {
 &"blur": SubResource("Animation_vmyb1")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="Inventory_UI" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -76,47 +78,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k0w1u")
+script = ExtResource("1_hfbh7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_bpi0q")
+material = SubResource("ShaderMaterial_cedrj")
 layout_mode = 0
 offset_right = 1922.0
 offset_bottom = 1075.0
 scale = Vector2(1, 0.9957186)
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 573.0
-offset_top = 321.0
-offset_right = 1332.0
-offset_bottom = 670.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(200, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
-
-[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_sjs17")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Inventory_Slots" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -303.0
+offset_right = 600.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7rvkw")
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = -163.0
+offset_right = 175.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 343
+columns = 2
+
+[node name="TextureRect" parent="NinePatchRect/GridContainer" instance=ExtResource("3_cedrj")]
+layout_mode = 2
+
+[node name="TextureRect2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_cedrj")]
+layout_mode = 2
