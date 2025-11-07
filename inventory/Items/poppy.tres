@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cxi3m738ollwm"]
+
+[ext_resource type="Script" uid="uid://dcknxy1e63whl" path="res://inventory/inv_item.gd" id="1_vi178"]
+[ext_resource type="Texture2D" uid="uid://b8jg0kfkq3a6n" path="res://Assets/flowers/PoppyOUTLINED.png" id="2_lilv8"]
+
+[resource]
+script = ExtResource("1_vi178")
+name = "Poppy"
+texture = ExtResource("2_lilv8")
+metadata/_custom_type_script = "uid://dcknxy1e63whl"

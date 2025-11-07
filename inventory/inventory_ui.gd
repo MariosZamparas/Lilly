@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 			close()
 		elif is_open == false and get_tree().paused == false:
 			open()
+			update_slots() 
 		
 
 func open():

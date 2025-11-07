@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbaklaeeqabl"]
+[gd_scene load_steps=10 format=3 uid="uid://dbaklaeeqabl"]
 
 [ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_ddv0c"]
 [ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="2_4tgxl"]
 [ext_resource type="Texture2D" uid="uid://jqak2fex7wtn" path="res://Assets/door.png" id="3_wb0eg"]
+[ext_resource type="Texture2D" uid="uid://b8jg0kfkq3a6n" path="res://Assets/flowers/PoppyOUTLINED.png" id="4_2x1nk"]
+[ext_resource type="Resource" uid="uid://cxi3m738ollwm" path="res://inventory/Items/poppy.tres" id="5_lcd28"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4ri8r"]
 
@@ -11,6 +13,9 @@ size = Vector3(9.939453, 0.140625, 2.0075684)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb0eg"]
 size = Vector3(2.030281, 2.0830078, 0.38110352)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybf13"]
+size = Vector3(1.715271, 1, 1.385498)
 
 [node name="Scene2" type="Node3D"]
 
@@ -33,8 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
 [node name="Interact" parent="." instance=ExtResource("2_4tgxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.021516, 0.007367134, -0.4716606)
 interaction_type = &"scene_change"
-target_file = "uid://bn6aix4r7mogv"
 int_text = "Press [E] to Exit"
+target_file = "uid://bn6aix4r7mogv"
 enter = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
@@ -49,3 +54,18 @@ text = "House 2"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7018642, 0.94125736, -0.9934933)
 texture_filter = 0
 texture = ExtResource("3_wb0eg")
+
+[node name="poppy" type="Sprite3D" parent="."]
+transform = Transform3D(2.68, 0, 0, 0, 2.68, 0, 0, 0, 2.68, 3.4276204, 0.64971775, 0)
+texture_filter = 0
+texture = ExtResource("4_2x1nk")
+
+[node name="Interact2" parent="." instance=ExtResource("2_4tgxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4084187, 0.76779246, 0)
+interaction_type = &"item_pickup"
+int_text = "Press [E] to Pick up a Poppy"
+item_type = ExtResource("5_lcd28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07144165, 0, 0.013793945)
+shape = SubResource("BoxShape3D_ybf13")

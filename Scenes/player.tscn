@@ -184,7 +184,7 @@ shape = SubResource("CapsuleShape3D_bi64h")
 [node name="Label3D" type="Label3D" parent="Interaction"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.96413267, 0)
 billboard = 1
-texture_filter = 0
+texture_filter = 1
 text = "Test"
 
 [node name="Area3D" type="Area3D" parent="Interaction"]
@@ -193,6 +193,11 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045166016, 0)
 shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="ItemLabel" type="Label3D" parent="Interaction"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.4181379, 0)
+billboard = 1
+text = "Item"
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_6t5aa")]
 
