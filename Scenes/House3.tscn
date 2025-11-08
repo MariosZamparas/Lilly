@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://4h1m0bq1i7tv"]
+
+[ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_v055j"]
+[ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="2_dh72p"]
+[ext_resource type="Texture2D" uid="uid://jqak2fex7wtn" path="res://Assets/door.png" id="3_voeqo"]
+[ext_resource type="Texture2D" uid="uid://dyrxr4in7r402" path="res://Assets/stairs.png" id="4_37wpf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ri8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddv0c"]
+size = Vector3(9.939453, 0.140625, 2.0075684)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb0eg"]
+size = Vector3(2.062561, 2.2416992, 0.51013184)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_utug6"]
+size = Vector3(2.6674805, 1, 1.1264648)
+
+[node name="Scene2" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4ri8r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062945366, 0)
+shape = SubResource("BoxShape3D_ddv0c")
+
+[node name="Player" parent="." instance=ExtResource("1_v055j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8439877, 0.69780684, 0.2827618)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
+
+[node name="Interact" parent="." instance=ExtResource("2_dh72p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.021516, 0.007367134, -0.4716606)
+interaction_type = "scene_change"
+int_text = "Press [E] to Exit"
+target_file = "uid://lfjwu2giu5n2"
+enter = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041900635, 0.6208496, -0.24493408)
+shape = SubResource("BoxShape3D_wb0eg")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(3.385, 0, 0, 0, 3.385, 0, 0, 0, 3.385, 0, 1.1835036, -1.0979726)
+text = "House 3
+"
+
+[node name="Door" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.887322, 0.92081475, -0.99523413)
+texture = ExtResource("3_voeqo")
+
+[node name="Stairs" type="Sprite3D" parent="."]
+transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 3.3778777, 1.228196, -1.0334373)
+texture = ExtResource("4_37wpf")
+
+[node name="Interact2" parent="." instance=ExtResource("2_dh72p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2253866, 0.72093046, -0.8406975)
+interaction_type = &"scene_change"
+int_text = "Press [E] to go upstairs"
+target_file = "uid://djwug5vhi0jdd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17700195, 0, 0.4876827)
+shape = SubResource("BoxShape3D_utug6")

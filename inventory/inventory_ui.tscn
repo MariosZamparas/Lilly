@@ -135,3 +135,24 @@ layout_mode = 2
 
 [node name="TextureRect2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_cedrj")]
 layout_mode = 2
+
+[node name="Delete_slot_1" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 162.0
+offset_right = 515.0
+offset_bottom = 206.0
+scale = Vector2(1.8959779, 1.5238682)
+text = "X"
+
+[node name="Delete_slot_2" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 164.0
+offset_right = 858.0
+offset_bottom = 208.0
+scale = Vector2(1.8959779, 1.5238682)
+text = "X"
+
+[connection signal="pressed" from="NinePatchRect/Delete_slot_1" to="." method="_on_delete_slot_1_pressed"]
+[connection signal="pressed" from="NinePatchRect/Delete_slot_2" to="." method="_on_delete_slot_2_pressed"]

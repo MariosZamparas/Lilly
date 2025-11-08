@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 			update_slots() 
 		
 
-func open():
+func open() -> void:
 	self.visible = true
 	is_open = true
 	get_tree().paused = true
@@ -48,3 +48,22 @@ func update_slots() -> void:
 		# Call the panel's set_item() (renamed from update to avoid clashing
 		# with the engine's builtin update()).
 		slots[i].set_item(item)
+
+
+		
+
+func _on_delete_slot_1_pressed() -> void:
+	if inv.is_empty():
+		print ("Nothing to erase")
+	else:
+		inv.remove_item(0)
+		update_slots()
+	
+
+
+func _on_delete_slot_2_pressed() -> void:
+	if inv.is_empty():
+		print ("Nothing to erase")
+	else:
+		inv.remove_item(1)
+		update_slots()

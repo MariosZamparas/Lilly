@@ -1,6 +1,10 @@
 extends Area3D
 class_name InteractionArea
 ## Minimal interaction carrier. Place on doors/items/NPCs.
+# Current Interaction types:
+#1. scene_change: is either an entrance or an exit, and is used to change location for the player/
+#2. item_pickup: used for any item that they player picks up
+#3. scene_change_locked: same as scene_change, but the player needs a key in order to enter
 
 @export var interaction_type: StringName = &""
 @export var int_text: String = ""

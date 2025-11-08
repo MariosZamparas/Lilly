@@ -1,0 +1,167 @@
+[gd_scene load_steps=23 format=3 uid="uid://d33cv53uex834"]
+
+[ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_xlsww"]
+[ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="2_m4587"]
+[ext_resource type="Texture2D" uid="uid://jqak2fex7wtn" path="res://Assets/door.png" id="3_tbfn1"]
+[ext_resource type="Resource" uid="uid://novfb3pin024" path="res://inventory/Items/key.tres" id="4_xlsww"]
+[ext_resource type="Texture2D" uid="uid://bwkryasxwt3nl" path="res://Assets/key-white.png" id="5_m4587"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ri8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddv0c"]
+size = Vector3(9.939453, 0.140625, 2.0075684)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb0eg"]
+size = Vector3(2.030281, 2.0830078, 0.38110352)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybf13"]
+size = Vector3(1.715271, 1, 1.385498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbfn1"]
+atlas = ExtResource("5_m4587")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhdmp"]
+atlas = ExtResource("5_m4587")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abxth"]
+atlas = ExtResource("5_m4587")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd54q"]
+atlas = ExtResource("5_m4587")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ebh"]
+atlas = ExtResource("5_m4587")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqmwg"]
+atlas = ExtResource("5_m4587")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbyps"]
+atlas = ExtResource("5_m4587")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhkwq"]
+atlas = ExtResource("5_m4587")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlbtt"]
+atlas = ExtResource("5_m4587")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ct8x"]
+atlas = ExtResource("5_m4587")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lurny"]
+atlas = ExtResource("5_m4587")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8igax"]
+atlas = ExtResource("5_m4587")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x13y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbfn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhdmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abxth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd54q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7ebh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqmwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbyps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhkwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlbtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ct8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lurny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8igax")
+}],
+"loop": true,
+"name": &"key",
+"speed": 7.0
+}]
+
+[node name="Scene2" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4ri8r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062945366, 0)
+shape = SubResource("BoxShape3D_ddv0c")
+
+[node name="Player" parent="." instance=ExtResource("1_xlsww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7489066, 0.69780684, -0.34778237)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
+
+[node name="Interact" parent="." instance=ExtResource("2_m4587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.021516, 0.007367134, -0.4716606)
+interaction_type = &"scene_change"
+int_text = "Press [E] to Exit"
+target_file = "uid://lfjwu2giu5n2"
+enter = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1758833, 1.0178972, -0.29661554)
+shape = SubResource("BoxShape3D_wb0eg")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(2.785, 0, 0, 0, 2.785, 0, 0, 0, 2.785, 0, 1.4534599, -1.188542)
+text = "House 5"
+
+[node name="Door" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7018642, 0.94125736, -0.9934933)
+texture_filter = 0
+texture = ExtResource("3_tbfn1")
+
+[node name="Interact2" parent="." instance=ExtResource("2_m4587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4084187, 0.76779246, 0)
+interaction_type = &"item_pickup"
+int_text = "Press [E] to Pick up a Key"
+item_type = ExtResource("4_xlsww")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07144165, 0, 0.013793945)
+shape = SubResource("BoxShape3D_ybf13")
+
+[node name="Key" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.5276163, 0.5605283, 0)
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_7x13y")
+animation = &"key"
+autoplay = "key"
+frame_progress = 0.39945996
