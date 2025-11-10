@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpe2usubucej4"]
+
+[ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_ecq1w"]
+[ext_resource type="Texture2D" uid="uid://c4o4cj4i23lgs" path="res://Assets/window.png" id="2_27lhl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ouitm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecekx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ecekx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_byc5i"]
+size = Vector3(20.939995, 0.45751953, 10.501373)
+
+[node name="lillys_house" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ecq1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 0.20682383, 6.057639, 17.140612)
+fov = 36.562504
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall3" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3920107, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, -10, 10, 0)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, -10, 10, 0)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="Wall2" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, 10, 10, 0)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, 10, 10, 0)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="Wall" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="floor" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/floor"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019680023, 0.27127945, -0.19413757)
+shape = SubResource("BoxShape3D_byc5i")
+
+[node name="ceiling" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/ceiling"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 20, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="Window" type="Sprite3D" parent="."]
+transform = Transform3D(-2.6226832e-07, 0, 6, 0, 6, 0, -6, 0, -2.6226832e-07, -8.810088, 3.2563605, -1.5869437)
+modulate = Color(0.27450982, 0.22352941, 1, 1)
+texture_filter = 0
+texture = ExtResource("2_27lhl")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Window"]
+transform = Transform3D(1, -8.765866e-09, 5.0698908e-08, -5.0698908e-08, -0.3357637, 0.94194627, 8.765866e-09, -0.94194627, -0.3357637, 0.120004326, 0.6476761, -0.18216884)
+light_color = Color(0.44313726, 0, 0.89411765, 1)
+shadow_enabled = true
+spot_range = 19.319237
+spot_attenuation = -0.01
+spot_angle = 50.95583
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(2.785, 0, 0, 0, 2.785, 0, 0, 0, 2.785, 0, 3.6742797, -4.4394093)
+text = "Main House Bedroom"

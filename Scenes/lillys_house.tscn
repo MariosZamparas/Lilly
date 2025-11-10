@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvhtb3gry61cl"]
+
+[ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_ouitm"]
+[ext_resource type="Texture2D" uid="uid://c4o4cj4i23lgs" path="res://Assets/window.png" id="2_ecekx"]
+[ext_resource type="Texture2D" uid="uid://bbdsiqylth8rk" path="res://Assets/candle.png" id="3_3msuu"]
+[ext_resource type="Texture2D" uid="uid://chbnr0la416y2" path="res://Assets/table.png" id="4_nlw51"]
+[ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="5_nlw51"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ouitm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecekx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ecekx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_byc5i"]
+size = Vector3(20.939995, 0.45751953, 10.501373)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3cit"]
+size = Vector3(1.3356934, 1.637207, 7.876526)
+
+[node name="lillys_house" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ouitm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Camera3Dmain" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 0.20682383, 6.057639, 17.140612)
+fov = 36.562504
+
+[node name="Camera3Dsecond" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 19.047596, 6.057639, 17.140612)
+fov = 36.562504
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall3" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3920107, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, -10, 10, 0)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, -10, 10, 0)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="Wall" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="floor" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/floor"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019680023, 0.27127945, -0.19413757)
+shape = SubResource("BoxShape3D_byc5i")
+
+[node name="ceiling" type="StaticBody3D" parent="Walls"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/ceiling"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 20, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="Walls2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.75798, 0, 0)
+
+[node name="Wall2" type="StaticBody3D" parent="Walls2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls2/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, 10, 10, 0)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls2/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 20, 0, 0, 0, 10, 10, 10, 0)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="Wall" type="StaticBody3D" parent="Walls2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls2/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+mesh = SubResource("BoxMesh_ouitm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls2/Wall"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 10, -5)
+shape = SubResource("BoxShape3D_ecekx")
+
+[node name="floor" type="StaticBody3D" parent="Walls2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls2/floor"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls2/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019680023, 0.27127945, -0.19413757)
+shape = SubResource("BoxShape3D_byc5i")
+
+[node name="ceiling" type="StaticBody3D" parent="Walls2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls2/ceiling"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 20, 0)
+mesh = SubResource("BoxMesh_ecekx")
+
+[node name="Window" type="Sprite3D" parent="."]
+transform = Transform3D(-2.6226832e-07, 0, 6, 0, 6, 0, -6, 0, -2.6226832e-07, -8.810088, 3.2563605, -1.5869437)
+modulate = Color(0.27450982, 0.22352941, 1, 1)
+texture_filter = 0
+texture = ExtResource("2_ecekx")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Window"]
+transform = Transform3D(1, -8.765866e-09, 5.0698908e-08, -5.0698908e-08, -0.3357637, 0.94194627, 8.765866e-09, -0.94194627, -0.3357637, 0.120004326, 0.6476761, -0.18216884)
+light_color = Color(0.44313726, 0, 0.89411765, 1)
+shadow_enabled = true
+spot_range = 19.319237
+spot_attenuation = -0.01
+spot_angle = 50.95583
+
+[node name="Table_with_candle" type="Node3D" parent="."]
+
+[node name="candle" type="Sprite3D" parent="Table_with_candle"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.2648926, 1.3572369, 0.022980928)
+texture_filter = 0
+texture = ExtResource("3_3msuu")
+
+[node name="table" type="Sprite3D" parent="Table_with_candle"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.266327, 0.89042234, 0)
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 1)
+texture_filter = 0
+texture = ExtResource("4_nlw51")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Table_with_candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2392616, 1.7095973, 0.09985876)
+light_color = Color(0.85882354, 0.5019608, 0, 1)
+light_energy = 4.133
+shadow_enabled = true
+omni_range = 37.444
+omni_attenuation = 1.8
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Table_with_candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.390657, 4.396036, -3.1721807)
+light_color = Color(0.27638897, 0.69908035, 0.40855518, 1)
+light_energy = 2.79
+shadow_enabled = true
+omni_range = 20.93
+omni_attenuation = 0.961
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(2.785, 0, 0, 0, 2.785, 0, 0, 0, 2.785, 0, 3.6742797, -4.4394093)
+text = "Main House Living Room"
+
+[node name="Interact" parent="." node_paths=PackedStringArray("current_camera", "next_camera") instance=ExtResource("5_nlw51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.551875, 1.6242361, 0)
+interaction_type = &"camera_change"
+trigger = true
+current_camera = NodePath("../Camera3Dmain")
+next_camera = NodePath("../Camera3Dsecond")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1710873, -0.31860352, 0.23764038)
+shape = SubResource("BoxShape3D_x3cit")

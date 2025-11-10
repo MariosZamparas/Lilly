@@ -36,7 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
 
 [node name="Interact" parent="." instance=ExtResource("2_dh72p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.021516, 0.007367134, -0.4716606)
-interaction_type = "scene_change"
 int_text = "Press [E] to Exit"
 target_file = "uid://lfjwu2giu5n2"
 enter = false
