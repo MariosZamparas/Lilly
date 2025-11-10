@@ -20,6 +20,6 @@ class_name InteractionArea
 
 #For a trigger camera change
 @export var trigger: bool = false
-@export var current_camera: Camera3D
+#@export var current_camera: Camera3D
 @export var next_camera: Camera3D
-@export var was_triggered: bool = false
+#var was_triggered: bool = false

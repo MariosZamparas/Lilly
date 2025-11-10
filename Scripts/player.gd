@@ -69,8 +69,16 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		execute_interaction()
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
+	#if (all_interactions[0] as InteractionArea).trigger == true:
+		#if (all_interactions[0] as InteractionArea).was_triggered == false:
+			#(all_interactions[0] as InteractionArea). was_triggered = true
+		#else:
+			#(all_interactions[0] as InteractionArea). was_triggered = false
+	
 	all_interactions.erase(area)
 	_update_interactions_label()
+	
+	
 	
 
 func _update_interactions_label() -> void:
@@ -116,12 +124,12 @@ func execute_interaction() -> void:
 					Global.spawn_from_stack = true
 					_change_scene_deferred((cur as InteractionArea).target_file)
 		"camera_change":
-			if (cur as InteractionArea).was_triggered == false:
-				(cur as InteractionArea).next_camera.make_current()
-				(cur as InteractionArea). was_triggered = true
-			else:
-				(cur as InteractionArea).current_camera.make_current()
-				(cur as InteractionArea). was_triggered = false
+			#if (cur as InteractionArea).was_triggered == false:
+			(cur as InteractionArea).next_camera.make_current()
+				
+			#else:
+				#(cur as InteractionArea).current_camera.make_current()
+				
 
 func _change_scene_deferred(path: String) -> void:
 	# Why: avoid "get_space() is null" by not swapping scenes inside the same physics step.
