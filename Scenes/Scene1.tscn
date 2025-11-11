@@ -1,31 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn6aix4r7mogv"]
+[gd_scene load_steps=5 format=3 uid="uid://bn6aix4r7mogv"]
 
 [ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_bxtam"]
-[ext_resource type="Texture2D" uid="uid://bd5dml1vxk8ay" path="res://Assets/housebrickdoor.png" id="2_pldgw"]
-[ext_resource type="Texture2D" uid="uid://uwaok3tmfs7m" path="res://Assets/lamp.png" id="3_80eni"]
-[ext_resource type="Texture2D" uid="uid://lry1wohf4xdx" path="res://Assets/house3.png" id="3_d5i7s"]
-[ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="4_jard6"]
-[ext_resource type="PackedScene" uid="uid://lfjwu2giu5n2" path="res://Scenes/Scene2.tscn" id="6_g5tfe"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_pldgw"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bxtam"]
-size = Vector3(2.0012207, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pldgw"]
-size = Vector3(4.6578903, 3.3869324, 0.16458893)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jard6"]
-size = Vector3(0.7598891, 1.8428345, 0.1437378)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d5i7s"]
-size = Vector3(1.8038025, 2.1833496, 0.6879883)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ixm4b"]
-size = Vector3(9.258415, 3.6279297, 9.975342)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g5tfe"]
-size = Vector3(18.229065, 3.5942383, 9.983643)
+[ext_resource type="PackedScene" uid="uid://cggmstotdh1uy" path="res://Scenes/chunk_1.tscn" id="2_jard6"]
+[ext_resource type="PackedScene" uid="uid://lfjwu2giu5n2" path="res://Scenes/chunk_2.tscn" id="6_g5tfe"]
 
 [sub_resource type="Environment" id="Environment_g5tfe"]
 background_mode = 1
@@ -38,151 +15,10 @@ ambient_light_energy = 1.75
 [node name="Player" parent="." instance=ExtResource("1_bxtam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5478034, 1.3272743, 1.2589355)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9422096, -0.15100786, 0.29906145, 0.04389173, 0.9406015, 0.33666328, -0.33213642, -0.30408108, 0.8928718, 3.5766284, 7.7810783, 14.0305)
-light_color = Color(0.018082548, 0.046250343, 0.24635765, 1)
-light_energy = 0.3
-shadow_enabled = true
-
-[node name="Camera3Dmain" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 1.5231643, 6.057639, 17.140612)
-fov = 36.562504
-
-[node name="Camera3Dsecondary" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 17.569622, 6.057639, 17.140612)
-fov = 36.562504
-
-[node name="Scene1" type="Node3D" parent="."]
-
-[node name="Floor" type="StaticBody3D" parent="Scene1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027822495, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene1/Floor"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0.027822495, 0)
-mesh = SubResource("BoxMesh_pldgw")
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/Floor"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -0.028076172, 0.027822495, 0)
-shape = SubResource("BoxShape3D_bxtam")
-
-[node name="House" type="StaticBody3D" parent="Scene1"]
-
-[node name="Sprite3D" type="Sprite3D" parent="Scene1/House"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1662903, 3.9939637, 0)
-shaded = true
-alpha_cut = 1
-texture_filter = 0
-texture = ExtResource("2_pldgw")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/House"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1388779, 3.0351582, -0.01335907)
-shape = SubResource("BoxShape3D_pldgw")
-
-[node name="House2" type="StaticBody3D" parent="Scene1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.110231, 1.4452994, -1.3908758)
-
-[node name="Sprite3D" type="Sprite3D" parent="Scene1/House2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1662903, 3.9939637, 0)
-modulate = Color(0.62967473, 0.62967473, 0.6296747, 1)
-shaded = true
-alpha_cut = 1
-texture_filter = 0
-texture = ExtResource("3_d5i7s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/House2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.1388779, 2.4299028, -0.01335907)
-shape = SubResource("BoxShape3D_pldgw")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Scene1/House2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.684103, 4.707945, 0.7017435)
-light_color = Color(0.5725678, 0.8649131, 0.63807863, 1)
-light_energy = 1.559
-omni_range = 1.688
-omni_attenuation = 7.434
-
-[node name="Lamp" type="StaticBody3D" parent="Scene1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.713171, -1.9332631, 1.8581104)
-
-[node name="Sprite3D" type="Sprite3D" parent="Scene1/Lamp"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.136448, 2.1658485, 0)
-texture_filter = 0
-texture = ExtResource("3_80eni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/Lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1371756, 2.172809, 0.005645752)
-shape = SubResource("BoxShape3D_jard6")
-
-[node name="Lamp2" type="StaticBody3D" parent="Scene1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.1489029, -1.9332631, 0.86970615)
-
-[node name="Sprite3D" type="Sprite3D" parent="Scene1/Lamp2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.136448, 2.1658485, 0)
-texture_filter = 0
-texture = ExtResource("3_80eni")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/Lamp2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1371756, 2.172809, 0.005645752)
-shape = SubResource("BoxShape3D_jard6")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Scene1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42888, 2.8132443, 1.6705804)
-light_color = Color(0.8664782, 0.42321387, 8.471012e-06, 1)
-light_energy = 2.0
-shadow_enabled = true
-omni_range = 9.975883
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Scene1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0440364, 2.8132443, 0.8455944)
-light_color = Color(0.8664782, 0.42321387, 8.471012e-06, 1)
-light_energy = 2.0
-shadow_enabled = true
-omni_range = 9.975883
-
-[node name="Interact" parent="Scene1" instance=ExtResource("4_jard6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8922177, 0.9917574, 0.2876954)
-interaction_type = &"scene_change"
-int_text = "Press [E] to Enter"
-target_file = "uid://dbaklaeeqabl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/Interact"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2050628, 0.6168213, 0.15600586)
-shape = SubResource("BoxShape3D_d5i7s")
-
-[node name="Interact2" parent="Scene1" instance=ExtResource("4_jard6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0968914, 0.9917574, -1.129428)
-interaction_type = &"scene_change"
-int_text = "Press [E] to Enter"
-target_file = "uid://bdfiisu0h3gy5"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene1/Interact2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2050628, 0.6168213, 0.15600586)
-shape = SubResource("BoxShape3D_d5i7s")
+[node name="Scene1" parent="." instance=ExtResource("2_jard6")]
 
 [node name="Scene2" parent="." instance=ExtResource("6_g5tfe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.54322, 0, 0)
-
-[node name="Interact" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("4_jard6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.30402, 1.0224819, 0)
-interaction_type = &"camera_change"
-trigger = true
-next_camera = NodePath("../Camera3Dsecondary")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 9.900093, 1.3140001, 0.021)
-visible = false
-shape = SubResource("BoxShape3D_ixm4b")
-
-[node name="Interact2" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("4_jard6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.666524, 1.0224819, 0)
-interaction_type = &"camera_change"
-trigger = true
-next_camera = NodePath("../Camera3Dmain")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50058, 1.2971191, 0.0030517578)
-visible = false
-shape = SubResource("BoxShape3D_g5tfe")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g5tfe")

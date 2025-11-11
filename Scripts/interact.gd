@@ -7,9 +7,14 @@ class_name InteractionArea
 #3. scene_change_locked: same as scene_change, but the player needs a key in order to enter
 #4. camera_change: used to change the active camera within the same scene
 
-@export var interaction_type: StringName = &""
-@export var int_text: String = ""
+#General Interaction Info
+@export var interaction_type: StringName = &"" #The identifier of the interaction type
+@export var int_text: String = "" #The text to be displayed on top of the player (if neccessary)
+@export var trigger: bool = false #trigger to determine if the interaction should happen with a button press or by entering the area
 
+#Varaibles for the chunk spawner
+@onready var chunk1: PackedScene = preload("res://Scenes/chunk_1.tscn")
+@onready var scene: Node = get_parent()
 
 #For the scene_change interactions
 @export_file("*.tscn") var target_file: String = ""
@@ -19,7 +24,18 @@ class_name InteractionArea
 @export var item_type: InvItem
 
 #For a trigger camera change
-@export var trigger: bool = false
-#@export var current_camera: Camera3D
 @export var next_camera: Camera3D
-#var was_triggered: bool = false
+
+func spawn_next_chunk() -> void:
+	# Instantiate the packed scene and add the resulting Node to the parent.
+	var inst = chunk1.instantiate()
+	if not inst:
+		push_error("spawn_next_chunk: failed to instantiate chunk scene")
+		return
+
+	var parent_node = scene if scene else get_parent()
+	if parent_node:
+		parent_node.add_child(inst)
+		print("child added")
+	else:
+		push_error("spawn_next_chunk: no parent to add chunk to")

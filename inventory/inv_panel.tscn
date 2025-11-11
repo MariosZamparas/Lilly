@@ -16,6 +16,7 @@ offset_bottom = 279.48
 script = ExtResource("1_7uh2c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.49803922, 1, 1, 1)
 texture_filter = 1
 scale = Vector2(18.5, 18.5)
 texture = ExtResource("2_kg3yh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lfjwu2giu5n2"]
+[gd_scene load_steps=12 format=3 uid="uid://lfjwu2giu5n2"]
 
 [ext_resource type="Texture2D" uid="uid://cegw6avmlqlvx" path="res://Assets/house2.png" id="2_7emfr"]
 [ext_resource type="Texture2D" uid="uid://cdtc5fpwydkp5" path="res://Assets/houseautre.png" id="3_bqrwg"]
@@ -22,13 +22,10 @@ size = Vector3(0.7598891, 1.8428345, 0.1437378)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5i7s"]
 size = Vector3(1.8038025, 2.1833496, 0.6879883)
 
-[node name="Scene" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0l3bu"]
+size = Vector3(9.258415, 3.6279297, 9.975342)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9422096, -0.15100786, 0.29906145, 0.04389173, 0.9406015, 0.33666328, -0.33213642, -0.30408108, 0.8928718, 3.5766284, 7.7810783, 14.0305)
-light_color = Color(0.018082548, 0.046250343, 0.24635765, 1)
-light_energy = 0.3
-shadow_enabled = true
+[node name="Scene" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9950365, 0.099510774, 0, -0.099510774, 0.9950365, 0.20682383, 6.057639, 17.140612)
@@ -133,3 +130,13 @@ target_file = "uid://4h1m0bq1i7tv"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6719608, 0.6168213, -1.5446295)
 shape = SubResource("BoxShape3D_d5i7s")
+
+[node name="Trigger2" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("5_os01q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.304535, 0)
+interaction_type = &"camera_change"
+trigger = true
+next_camera = NodePath("../Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger2"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0l3bu")
