@@ -129,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
 
 [node name="Interact" parent="." instance=ExtResource("2_m4587")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.021516, 0.007367134, -0.4716606)
-interaction_type = &"scene_change"
+interaction_type = "scene_change"
 int_text = "Press [E] to Exit"
 target_file = "uid://bn6aix4r7mogv"
 enter = false
@@ -149,7 +149,7 @@ texture = ExtResource("3_tbfn1")
 
 [node name="Interact2" parent="." instance=ExtResource("2_m4587")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4084187, 0.76779246, 0)
-interaction_type = &"item_pickup"
+interaction_type = "item_pickup"
 int_text = "Press [E] to Pick up a Key"
 item_type = ExtResource("4_xlsww")
 

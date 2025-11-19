@@ -89,14 +89,20 @@ func execute_interaction() -> void:
 	match (cur as InteractionArea).interaction_type:
 		"scene_change":
 			if (cur as InteractionArea).enter:
-				# Going inside: remember current outside position; next spawn is default (no stack pop).
+				#Going inside: remember current outside position; next spawn is default (no stack pop).
 				Global.push_position(global_position)
 				Global.spawn_from_stack = false
-				_change_scene_deferred((cur as InteractionArea).target_file)
+				SceneSwitch.switch_scene((cur as InteractionArea).target_file)
 			else:
 				# Leaving: next player instance should spawn from the last saved position.
 				Global.spawn_from_stack = true
-				_change_scene_deferred((cur as InteractionArea).target_file)
+				SceneSwitch.switch_scene((cur as InteractionArea).target_file)
+				
+				#if ((cur as InteractionArea).target_file) == "res://Scenes/Scene1.tscn":
+					#print("Scene Identified")
+					#var scene_root = (cur as InteractionArea).target_file
+					#SaveState.load_chunks(scene_root)
+					
 		"item_pickup":
 			pickup_item((cur as InteractionArea).item_type, inv)
 		"scene_change_locked":
@@ -109,24 +115,17 @@ func execute_interaction() -> void:
 					# Going inside: remember current outside position; next spawn is default (no stack pop).
 					Global.push_position(global_position)
 					Global.spawn_from_stack = false
-					_change_scene_deferred((cur as InteractionArea).target_file)
+					SceneSwitch.switch_scene((cur as InteractionArea).target_file)
 				else:
 					# Leaving: next player instance should spawn from the last saved position.
 					Global.spawn_from_stack = true
-					_change_scene_deferred((cur as InteractionArea).target_file)
+					SceneSwitch.switch_scene((cur as InteractionArea).target_file)
 		"camera_change":
 			(cur as InteractionArea).next_camera.make_current()
 		"chunk_spawn":
 			print ("chunk_spawn initiated")
 			(cur as InteractionArea).spawn_next_chunk()
 
-func _change_scene_deferred(path: String) -> void:
-	# Why: avoid "get_space() is null" by not swapping scenes inside the same physics step.
-	set_physics_process(false)
-	call_deferred("_do_change_scene", path)
-
-func _do_change_scene(path: String) -> void:
-	get_tree().change_scene_to_file(path)
 
 func pickup_item(item: InvItem, player_inv: Inv = null) -> void:
 	# If no inventory provided, use the player's exported one.

@@ -114,7 +114,7 @@ omni_range = 9.975883
 
 [node name="Interact" parent="." instance=ExtResource("4_p86kw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8922177, 0.9917574, 0.2876954)
-interaction_type = &"scene_change"
+interaction_type = "scene_change"
 int_text = "Press [E] to Enter"
 target_file = "uid://dbaklaeeqabl"
 
@@ -124,7 +124,7 @@ shape = SubResource("BoxShape3D_d5i7s")
 
 [node name="Interact2" parent="." instance=ExtResource("4_p86kw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0968914, 0.9917574, -1.129428)
-interaction_type = &"scene_change"
+interaction_type = "scene_change"
 int_text = "Press [E] to Enter"
 target_file = "uid://bdfiisu0h3gy5"
 
@@ -138,7 +138,7 @@ fov = 36.562504
 
 [node name="Trigger1" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("4_p86kw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.666524, 1.0224819, 0)
-interaction_type = &"camera_change"
+interaction_type = "camera_change"
 trigger = true
 next_camera = NodePath("../Camera3Dmain")
 

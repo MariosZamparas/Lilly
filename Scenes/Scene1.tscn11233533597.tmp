@@ -30,15 +30,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.54322, 0, 0)
 environment = SubResource("Environment_g5tfe")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.3437745, 0.9390523, 0, -0.9390523, -0.3437745, 0, 16.261648, -4.171132)
+transform = Transform3D(1, 0, 0, 0, -0.34377447, 0.9390522, 0, -0.9390522, -0.34377447, 0, 16.261648, -4.171132)
 light_color = Color(0.57254905, 0.78431374, 1, 1)
 light_energy = 0.01
 shadow_enabled = true
 
 [node name="Interact" parent="." instance=ExtResource("4_jard6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.976071, 1.1544914, 0)
-interaction_type = "chunk_spawn"
+interaction_type = &"chunk_spawn"
+int_text = null
 trigger = true
+target_file = null
+enter = null
 chunk_offset = Vector3(25, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
