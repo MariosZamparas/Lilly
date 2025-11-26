@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn6aix4r7mogv"]
+[gd_scene load_steps=9 format=3 uid="uid://bn6aix4r7mogv"]
 
 [ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_bxtam"]
 [ext_resource type="Script" uid="uid://duop1lfljlt7f" path="res://Scripts/scene_1.gd" id="1_d5i7s"]
@@ -14,6 +14,9 @@ ambient_light_energy = 1.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5i7s"]
 size = Vector3(1, 1, 9.9105835)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g5tfe"]
+size = Vector3(0.9370117, 1, 2.9503174)
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_d5i7s")
@@ -44,3 +47,13 @@ chunk_offset = Vector3(25, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13120556, 0, -0.031585693)
 shape = SubResource("BoxShape3D_d5i7s")
+
+[node name="Interact2" parent="." instance=ExtResource("4_jard6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.948305, 0.93467116, 1.5277243)
+interaction_type = "scene_change"
+int_text = "Press [E] to go Home"
+target_file = "uid://bvhtb3gry61cl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44049454, 0, 0.9751587)
+shape = SubResource("BoxShape3D_g5tfe")

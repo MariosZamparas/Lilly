@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d33cv53uex834"]
+[gd_scene load_steps=24 format=3 uid="uid://d33cv53uex834"]
 
 [ext_resource type="PackedScene" uid="uid://d11plsrexwx2s" path="res://Scenes/player.tscn" id="1_xlsww"]
 [ext_resource type="PackedScene" uid="uid://b6rxomb66cow6" path="res://Scenes/interact.tscn" id="2_m4587"]
@@ -109,6 +109,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cqd8"]
+size = Vector3(10.4021, 3.2158203, 2.5620117)
+
 [node name="Scene2" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -165,3 +168,13 @@ sprite_frames = SubResource("SpriteFrames_7x13y")
 animation = &"key"
 autoplay = "key"
 frame_progress = 0.39945996
+
+[node name="Trigger" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("2_m4587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7523992, 0)
+interaction_type = "camera_change"
+trigger = true
+next_camera = NodePath("../Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015991211, 0.6303711, -0.0925293)
+shape = SubResource("BoxShape3D_6cqd8")

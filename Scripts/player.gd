@@ -22,6 +22,7 @@ func _ready() -> void:
 		Global.spawn_from_stack = false
 
 func _physics_process(delta: float) -> void:
+	
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta

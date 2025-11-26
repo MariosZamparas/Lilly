@@ -15,8 +15,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_byc5i"]
 size = Vector3(20.939995, 0.45751953, 10.501373)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x3cit"]
-size = Vector3(1.3356934, 1.637207, 7.876526)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlw51"]
+size = Vector3(18.974548, 12.923279, 10.003967)
 
 [node name="lillys_house" type="Node3D"]
 
@@ -157,11 +157,21 @@ transform = Transform3D(2.785, 0, 0, 0, 2.785, 0, 0, 0, 2.785, 0, 3.6742797, -4.
 text = "Main House Living Room"
 
 [node name="Interact" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("5_nlw51")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.551875, 1.6242361, 0)
-interaction_type = &"camera_change"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1401114, 0)
+interaction_type = "camera_change"
+trigger = true
+next_camera = NodePath("../Camera3Dmain")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3888855, 4.463043, 0.052825928)
+shape = SubResource("BoxShape3D_nlw51")
+
+[node name="Interact2" parent="." node_paths=PackedStringArray("next_camera") instance=ExtResource("5_nlw51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.16337, 2.1401114, 0)
+interaction_type = "camera_change"
 trigger = true
 next_camera = NodePath("../Camera3Dsecond")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1710873, -0.31860352, 0.23764038)
-shape = SubResource("BoxShape3D_x3cit")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3888855, 4.463043, 0)
+shape = SubResource("BoxShape3D_nlw51")
