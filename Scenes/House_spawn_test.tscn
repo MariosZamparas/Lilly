@@ -32,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5683706, 4.3753757)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58051634, 0)
 interaction_type = &"chunk_spawn"
 trigger = true
+chunk_offset = Vector3(14.98, -0.555, -1.518)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
 shape = SubResource("BoxShape3D_iaape")

@@ -5,7 +5,6 @@ var position_stack: Array[Vector3] = []
 var spawn_from_stack: bool = false  # set true when leaving an interior
 
 func push_position(p: Vector3) -> void:
-	# Why: keep a history of entrances to return to the correct spot on exit.
 	position_stack.push_back(p)
 
 func pop_position() -> Vector3:

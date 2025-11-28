@@ -1,0 +1,46 @@
+extends Node
+
+var current_view: Node = null
+var views: Dictionary = {}  # path: String -> Node
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("StartGame"):
+		switch_scene("res://Scenes/Scene1.tscn")
+
+func switch_scene(path: String)->void:
+	var res := load(path)
+	if res:
+		path = res.resource_path
+	call_deferred("_do_switch", path)
+	print (SceneSwitch.views)
+
+func _do_switch(path: String) -> void:
+	# Hide + pause current view (safe to do deferred)
+	if current_view and is_instance_valid(current_view):
+		current_view.visible = false
+		current_view.process_mode = Node.PROCESS_MODE_DISABLED
+
+	var new_view: Node = null
+
+	# If we've already instantiated this scene, reuse it
+	if views.has(path) and is_instance_valid(views[path]):
+		new_view = views[path]
+	else:
+		# First time seeing this path: instantiate and cache
+		new_view = instantiate_scene(path)
+		get_tree().root.add_child(new_view)
+		views[path] = new_view
+
+	# Show + unpause new view
+	new_view.visible = true
+	new_view.process_mode = Node.PROCESS_MODE_INHERIT
+
+	# Set as current scene (must be direct child of root)
+	get_tree().current_scene = new_view
+
+	current_view = new_view
+
+func instantiate_scene(path: String) -> Node:
+	var packed_scene: PackedScene = load(path)
+	var instantiated_scene: Node = packed_scene.instantiate()
+	return instantiated_scene
